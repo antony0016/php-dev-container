@@ -1,0 +1,12 @@
+version: '3.3'
+
+services:
+  php:
+    image: sekixu/php-dev
+    container_name: php
+    volumes:
+      - ./project:/var/www/html
+    ports:
+      - 9000:9000
+    # environment:
+    #   - XDEBUG_CONFIG=remote_host=host.docker.internal
