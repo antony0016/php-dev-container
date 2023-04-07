@@ -19,4 +19,4 @@ COPY conf/vim/.vimrc /root/.vimrc
 RUN vim +PlugInstall +qall
 # set working directory
 WORKDIR /var/www/html
-EXPOSE 9000
+# EXPOSE 9000

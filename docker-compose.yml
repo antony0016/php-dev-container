@@ -1,12 +1,37 @@
 version: '3.3'
 
 services:
-  php:
-    image: sekixu/php-dev
-    container_name: php
+  nginx:
+    image: nginx:alpine
+    container_name: php-nginx
+    volumes:
+      - ./project:/var/www/html
+      - ./conf/nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./conf/nginx/include:/etc/nginx/include
+    ports:
+      - 80:80
+    networks:
+      - php-network
+    depends_on:
+      - php-fpm
+
+  php-fpm:
+    image: php:fpm-alpine
+    container_name: php-fpm
     volumes:
       - ./project:/var/www/html
     ports:
       - 9000:9000
-    # environment:
-    #   - XDEBUG_CONFIG=remote_host=host.docker.internal
+    networks:
+      - php-network
+
+networks:
+  php-network:
+    driver: bridge
+  # php:
+  #   image: sekixu/php-dev
+  #   container_name: php
+  #   volumes:
+  #     - ./project:/var/www/html
+  #   ports:
+  #     - 9000:9000
