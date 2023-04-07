@@ -15,5 +15,8 @@ RUN curl -fLo /root/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 # copy vim config
 COPY conf/vim/.vimrc /root/.vimrc
+# Install vim plugins
+RUN vim +PlugInstall +qall
 # set working directory
 WORKDIR /var/www/html
+EXPOSE 9000

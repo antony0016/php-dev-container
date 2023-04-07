@@ -33,6 +33,6 @@ set ts=4
 set expandtab
 
 " 自動縮排 ｜ autoindent / smartindent / cindent
-set autoindent " 跟上一行的縮進一致
+set smartindent " 跟上一行的縮進一致
 
-colorscheme molokai
+" colorscheme molokai
