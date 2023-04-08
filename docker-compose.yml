@@ -16,12 +16,10 @@ services:
       - php-fpm
 
   php-fpm:
-    image: php:fpm-alpine
+    image: sekixu/my-fpm
     container_name: php-fpm
     volumes:
       - ./project:/var/www/html
-    ports:
-      - 9000:9000
     networks:
       - php-network
 

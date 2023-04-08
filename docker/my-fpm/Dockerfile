@@ -1,9 +1,13 @@
-FROM alpine
-# update and upgrade alpine
+FROM php:fpm-alpine
+# update alpine packages
 RUN apk update && apk upgrade
+
 # install git, vim, python3, curl, zsh, php7, composer, nodejs, yarn, npm, ctags, php-tokenizer
-RUN apk update && \
-    apk add --no-cache git vim tmux python3 curl zsh php composer nodejs yarn npm ctags php-tokenizer
+RUN apk add --no-cache git vim tmux python3 curl zsh nodejs yarn npm ctags
+
+# install php extensions
+RUN docker-php-ext-install pdo pdo_mysql
+
 # install oh-my-zsh
 RUN sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 # copy zsh config
@@ -19,4 +23,3 @@ COPY conf/vim/.vimrc /root/.vimrc
 RUN vim +PlugInstall +qall
 # set working directory
 WORKDIR /var/www/html
-# EXPOSE 9000

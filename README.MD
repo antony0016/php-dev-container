@@ -20,8 +20,10 @@ Include a .vimrc to install extention for php.
 
 ### docker related files
 
-Like docker-compose.yml, Dockerfile, etc.
-I use docker to build a php development environment. and you can simply run build.sh, run.sh and use.sh to build, run and use the environment, server.sh to create the production environment.
+I use docker to build a php development environment, here has some scripts to build and run docker container.
+
+**exec-dev.sh**
+This script is used to create a container. You can use vim to edit your php file in this container.
 
 ---
 
@@ -29,15 +31,14 @@ I use docker to build a php development environment. and you can simply run buil
 
 ### Build docker image
 
-Use build.sh to build docker image.the image name is sekixu/php-dev.
+**build.sh**
+Build script in docker/my-fpm, use it to build a docker image.
 
-### Run docker container
+Use build.sh to build docker image.the image name is sekixu/php-fpm.
 
-Use run.sh to run docker container. the container name is php.
+### Exec dev environment docker container
 
-### Use docker container
-
-If you already created a container, and you want to use it, you can use use.sh to use it.
+Use exec-dev.sh to run docker container. the container name is php-dev.
 
 ### Create production environment
 
@@ -62,3 +63,7 @@ run php interactive shell.
 ### php -r \<your-php-file>
 
 run php file without php tag.
+
+### php -S localhost:8000
+
+run php with built-in web server.
