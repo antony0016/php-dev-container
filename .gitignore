@@ -2,3 +2,4 @@ Vundle.vim
 
 .idea
 /project
+/conf/nginx/include/php.conf
